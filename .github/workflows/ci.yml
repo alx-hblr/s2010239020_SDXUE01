@@ -6,7 +6,7 @@ on:
       - "main"
 
 jobs:
-  buildx:
+  setup-buildx:
     name: Setup Buildx Environment
     runs-on: ubuntu-latest
     steps:
@@ -23,7 +23,7 @@ jobs:
   lint-build:
     name: Lint Go and Dockerfile & Build Docker Image
     runs-on: ubuntu-latest
-    needs: buildx
+    needs: setup-buildx
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -42,16 +42,16 @@ jobs:
           dockerfile: dockerfile
       - name: Build Docker Image
         uses: docker/build-push-action@v2.8.0
-        id: builder1
         with:
           context: .
           push: true
-          platforms: |
-            linux/amd64,linux/arm64
-          builder: ${{ steps.builder1.outputs.name }}
+          builder: "default"
           tags: |
             myimage:latest-amd64
             myimage:latest-arm64
+          platforms: |
+            linux/amd64
+            linux/arm64
       - name: Run Trivy
         uses: aquasecurity/trivy-action@master
         with:
