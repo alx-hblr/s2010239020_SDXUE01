@@ -61,9 +61,13 @@ jobs:
       - name: Run the application and database
         run: |
           docker compose up -d
+      - name: Run python test file
+        run: |
           python3 ./api-test-example.py
+      - name: Shutdown docker
+        run: |
           docker compose down
-      - name: Build and push#
+      - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
