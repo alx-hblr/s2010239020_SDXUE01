@@ -16,7 +16,6 @@ class TestRecipeAPI(unittest.TestCase):
             "name": "Test Recipe",
             "description": "This is a test recipe.",
             "ingredients": ["Ingredient 1", "Ingredient 2"],
-            "instructions": "Test instructions."
         }
 
         # Send a POST request to create the recipe
