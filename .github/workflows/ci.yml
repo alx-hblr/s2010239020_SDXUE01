@@ -32,7 +32,7 @@ jobs:
           push: false
           platforms: |
             linux/amd64,linux/arm64
-          builder: tonistiigi/xx-build
+          builder: docker/dockerfile:1.2.2
           tags: |
             myimage:latest-amd64
             myimage:latest-arm64
