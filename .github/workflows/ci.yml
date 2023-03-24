@@ -21,9 +21,10 @@ jobs:
         with:
           version: v1.51
           working-directory: src
-      - name: Lint Dockerfile
-        run: |
-          apt-get update
-          apt-get install -y hadolint
-
-          hadolint dockerfile
+      - name: dockerlint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: dockerfile
+    
+      
+          
