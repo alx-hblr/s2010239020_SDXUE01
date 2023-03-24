@@ -7,11 +7,8 @@ WORKDIR /app
 # Copy the contents of the src directory to the container's /app directory
 COPY src/ .
 
-# Download and install dependencies for the project
-RUN go get -d -v ./...
-
-# Compile the Go code and build the binary executable file named /main
-RUN go build -o /main .
+# Download and install dependencies for the project && Compile the Go code and build the binary executable file named /main
+RUN go get -d -v ./... && go build -o /main .
 
 # Use a minimalist base image to reduce container size
 FROM debian:bullseye-slim
