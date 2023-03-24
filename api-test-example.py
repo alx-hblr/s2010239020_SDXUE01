@@ -1,5 +1,6 @@
 import unittest
 import requests
+import time
 
 class TestRecipeAPI(unittest.TestCase):
     API_URL = "http://127.0.0.1:8080/recipes"
@@ -26,4 +27,5 @@ class TestRecipeAPI(unittest.TestCase):
         self.assertEqual(response.json(), recipe)
 
 if __name__ == '__main__':
+    time.sleep(15)
     unittest.main()
