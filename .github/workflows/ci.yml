@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - "main"
-
+env:
+  TEST_TAG: alxhblr/app:test
+  
 jobs:
   setup-buildx:
     name: Setup Buildx Environment
