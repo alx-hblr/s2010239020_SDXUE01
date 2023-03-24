@@ -6,6 +6,7 @@ on:
       - "main"
 env:
   TEST_TAG: alxhblr/app:test
+  LATEST_TAG: alxhblr/app:latest
   
 jobs:
   setup-buildx:
@@ -57,3 +58,17 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
+      - name: Run the application and database
+        run: |
+          docker compose up -d
+          python3 ./api-test-example.py
+          docker compose down
+      - name: Build and push#
+        uses: docker/build-push-action@4
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ env.LATEST_TAG }}
+      
+          
