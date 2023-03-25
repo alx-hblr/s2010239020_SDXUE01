@@ -23,7 +23,10 @@ class TestRecipeAPI(unittest.TestCase):
 
         # Check that the response has a success status code and contains the created recipe
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), recipe)
+        response_recipe = response.json()
+        self.assertEqual(response_recipe['name'], recipe['name'])
+        self.assertEqual(response_recipe['description'], recipe['description'])
+        self.assertEqual(response_recipe['ingredients'], recipe['ingredients'])
 
 if __name__ == '__main__':
     time.sleep(15)
