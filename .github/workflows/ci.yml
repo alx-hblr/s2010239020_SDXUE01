@@ -67,14 +67,11 @@ jobs:
       - name: Shutdown docker
         run: |
           docker compose down
-          
       - name: Check builder driver
         run: docker buildx inspect --bootstrap
       - name: Create and use builder instance
         run: |
           docker buildx create --name mybuilder --use
-
-
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
