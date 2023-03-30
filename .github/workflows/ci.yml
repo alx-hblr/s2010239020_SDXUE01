@@ -6,7 +6,7 @@ on:
       - "main"
 env:
   TEST_TAG: alxhblr/app:test
-  LATEST_TAG: alxhblr/app:latest
+  LATEST_TAG: alxhblr/s2010239020_sdxue01/general:latest
   
 jobs:
   setup-buildx:
