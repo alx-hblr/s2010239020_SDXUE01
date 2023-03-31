@@ -5,7 +5,7 @@ on:
     branches:
       - "main"
 env:
-  TEST_TAG: alxhblr/app:test
+  TEST_TAG: alxhblr/s2010239020_sdxue01:test
   LATEST_TAG: alxhblr/s2010239020_sdxue01:latest
   
 jobs:
